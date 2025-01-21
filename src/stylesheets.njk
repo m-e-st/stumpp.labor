@@ -1,0 +1,12 @@
+---
+permalink: "/static/{{ page.fileSlug | slug }}.css"
+---
+{% include "./_library/w3.css" %}
+{% include "./_library/main.css" %}
+
+{% include "./_library/colors.css" %}
+{% include "./_library/goodies.css" %}
+
+#versionstring::after {
+				content: "Version {{ pkg.version }}";
+			}
