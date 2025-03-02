@@ -1,0 +1,61 @@
+/***
+ *	stumpp.name main.css 
+ *
+ *	Copyright 2024 Michael Stumpp (michael@stumpp.name)
+ *
+ *  07.08.2023 default styles for layouts (sidebar, content)
+ *  22.01.2025 configurable main page color */
+
+{# set pagecolor = "lime" #}
+{# set pagecolor = "amber" #}
+{# set pagecolor = "stone" #}
+
+{% set pagecolor = "lime" %}
+
+/*** ************************************************************** ***/
+
+.theme-header, -theme-header:hover, .w3-tag {
+	color: var(--{{pagecolor}}-50)!important;
+	background-color: var(--{{pagecolor}}-950)!important
+}
+
+body {
+	background-image: linear-gradient(white, var(--{{pagecolor}}-50), var(--{{pagecolor}}-100), var(--{{pagecolor}}-100), var(--{{pagecolor}}-200), var(--{{pagecolor}}-400));   
+	background-attachment: fixed;
+ 	height: 100vh;
+ 	color: var(--{{pagecolor}}-950);
+	accent-color: var(--slate-500);
+}
+
+main {
+}
+header {
+	margin-top: 0;
+	background-color: var(--{{pagecolor}}-950);
+	color: var(--{{pagecolor}}-50);
+}
+footer {
+	margin-bottom: 0;
+}
+
+a, a:hover {
+	text-decoration: none;
+}
+hr {
+	color: var(--{{pagecolor}}-50);
+	margin-top:0; 
+	border: 1px solid;
+}
+
+/*** ************************************************************** ***/
+
+.sidebar { width:130px; }
+.content { margin-left:130px; }
+
+@media only screen and (max-width: 600px) {
+.sidebar {display:none }
+.content { margin-left:0px; }
+}
+
+/*** ************************************************************** ***/
+

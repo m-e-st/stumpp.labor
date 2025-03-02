@@ -36,6 +36,52 @@ new b(e[36],2343527390),new b(e[37],1014477480),new b(e[38],1206759142),new b(e[
 new b(e[57],1125592928),new b(e[58],2716904306),new b(e[59],442776044),new b(e[60],593698344),new b(e[61],3733110249),new b(e[62],2999351573),new b(e[63],3815920427),new b(3391569614,3928383900),new b(3515267271,566280711),new b(3940187606,3454069534),new b(4118630271,4000239992),new b(116418474,1914138554),new b(174292421,2731055270),new b(289380356,3203993006),new b(460393269,320620315),new b(685471733,587496836),new b(852142971,1086792851),new b(1017036298,365543100),new b(1126000580,2618297676),
 new b(1288033470,3409855158),new b(1501505948,4234509866),new b(1607167915,987167468),new b(1816402316,1246189591)];"function"===typeof define&&define.amd?define(function(){return y}):"undefined"!==typeof exports?"undefined"!==typeof module&&module.exports?module.exports=exports=y:exports=y:T.jsSHA=y})(this);
 	<!-- standard lib: SHA Verschlüsselung -->
+/***
+ * main.js für stumpp labor
+ * 
+ *
+ */
+ 
+ 
+/* das sind die beiden Buttons oben links im Header */
+const buttonLogin = document.getElementById('layoutLogin');
+let statusLogin = 0;
+
+/*** initialization on document ready ***/
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+	if (buttonLogin) {
+		setLucideStroke(buttonLogin, 'transparent', 1);
+		buttonLogin.addEventListener('click', loginUser);
+		setLucideStroke(buttonLogin, '#888', 1);
+
+	}
+
+	displayMain();
+  // intervalTimer(true);  --> wird nur in "tim.njk" gestartet
+});
+ 
+function loginUser() {
+	const stateColor = [ '#888', 'yellow', '#6F9'];
+	const stateStroke = [1,1,2];
+	if (++statusLogin > 2) statusLogin = 0;
+	setLucideStroke(buttonLogin, stateColor[statusLogin], stateStroke[statusLogin]);
+}
+
+
+/***
+ * Diese Funktion wird vom Button im Footer unten links aufgerufen,
+ * um die Sichtbarkeit der Footerzeile umzuschalten.
+ */
+function footerToggleVisibility() {
+  var domX = document.getElementById("layoutCopyright");
+  if (domX.style.display === "none") {
+    domX.style.display = "block";
+  } else {
+    domX.style.display = "none";
+  }
+}
 
 /***
  *	utility.js - Javascript Helpers

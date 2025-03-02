@@ -1,0 +1,127 @@
+---
+type: layout
+layout: base.njk
+version: 2025-01-21
+---
+
+<style>
+	main {
+{% if not format.noheader %}
+		{{ "padding-top:64px;" if not format.topscroll }}
+		display:block;
+{% endif %}
+{% if not format.nofooter %}
+		padding-bottom:48px;
+		display:block;
+{% endif %}
+	}
+</style>
+
+{% macro dropdown_item(caption, url, tooltip='') %}
+	<a href="{{url}}" target="{{ 'external' if (''+url).startsWith('http') else '_self' }}" 
+	   class="w3-tooltip w3-bar-item w3-button theme-header">{{caption|safe}} <span class="w3-text w3-tag"> {{tooltip|safe}}</span></a>
+{% endmacro %}
+
+{% macro tiptext(subitem) %}
+	{% if subitem.lang %}
+		{{subitem.lang}} {{subitem.url|d('')}}
+	{% elif subitem.tip %}
+		{{subitem.tip}}
+	{% elif subitem.tip === '' %}
+	
+	{% else %}
+		{{subitem.url|d('')}}					
+	{% endif %}
+{% endmacro %}
+
+{% if not format.noheader %}
+<header class="{{ "w3-top" if not format.topscroll }}">
+	<div class="w3-cell-row">
+		<!-- LOGO Abschnitt -->
+		<div class="w3-mobile w3-container w3-cell w3-cell-middle w3-hover-shadow {{ format.logoclass }}" style="width:15rem">
+			<a href="{{ site.url.home | default('/') }}">
+				<h3 id="layoutCaption"
+					class="" style="font-weight: 550;"
+					title="{{ description if description else site.description }}">
+					<img src="{{site.pagelogo}}" style="float:left;height:36px;margin-right:12px;"
+						 id="layoutLogo"
+						 onmouseover="document.getElementById('layoutLogo').classList.add('w3-spin');"
+						 onmouseout="document.getElementById('layoutLogo').classList.remove('w3-spin');">
+					{{ caption | d(site.caption) | lower }}
+				</h3>
+			</a>
+		</div>
+		<!-- Ende LOGO Abschnitt -->
+		<!-- TOP MENU Mitte-->
+		<div class="w3-hide-small w3-container w3-cell w3-cell-middle">
+			<div class="w3-bar">
+			{% for item in menu %}
+				{% if item.menu %}
+					<div class="w3-dropdown-hover">
+						<button class="w3-btn">{{ item.name | safe }}</button>
+						<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						{% for subitem in item.menu %}
+							{% if subitem.name =='---' %}
+								<span class="w3-bar-item"></span>
+							{% else %}
+								{% set tiptext = subitem.lang if subitem.lang else subitem.tip|d(subitem.url) %}
+								<a href="{{subitem.url|d('#')}}" 
+								   target="{{ 'external' if (''+subitem.url).startsWith('http') else '_self' }}" 
+								   class="w3-tooltip w3-bar-item w3-button theme-header">
+										{{subitem.name|safe}} 
+										<span class="w3-text w3-tag"> {{subitem.lang+' '+subitem.url|d('') if subitem.lang else subitem.tip|d(subitem.url)|safe}}</span>
+								</a>								
+							{% endif %}
+						{% endfor %}
+						</div>
+					</div>
+				{% elif item.url %}
+					<a href="{{item.url}}" class="w3-bar-item w3-button">{{ item.name | safe }}</a>
+				{% elif item.name %}
+					<a href="#" class="w3-bar-item w3-button">{{ item.name | safe }}</a>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+		<!-- Ende TOP MENU Mitte-->
+
+		<!-- Buttons oben rechts-->
+		<div class="w3-container w3-cell w3-cell-middle" style="position:absolute;top:4px;right:-16px;">
+			<div class="w3-hide-small {{ w3-hide if format.nobuttons }}">
+				<button id="layoutLogin" class="w3-btn" style="margin-top:0;">
+					{% lucide "user" ,{ "stroke": "#888", "stroke-width": 1, "size":"32" } %}
+				</button>
+			</div>
+		</div>
+		<!-- Ende Buttons oben rechts-->
+	</div>
+	<hr class="w3-hide-small" style="">
+</header>
+{% endif %}
+
+
+<main class="w3-section w3-container">
+	{{ content | safe }}
+</main>
+
+{% if not format.nofooter %}
+<footer class="w3-bottom" style="height:48px;">
+	<div class="w3-container w3-transparent w3-padding-large w3-center">
+		<button class="w3-mobile w3-hide-small w3-btn w3-left w3-tooltip" onclick='footerToggleVisibility();'>
+			&nbsp;<span class="w3-text">{% lucide "toggle-right" %}</span>
+		</button> <!-- was: &#127465;&#127466; -->
+
+
+		<div id="layoutCopyright" class="w3-mobile w3-hide-small">
+			<span class="w3-text-blue-grey">
+				{% if not site.author.hide %}&copy; 2023 {% endif %}
+				<a href="{{ site.url.impressum }}">{{ site.author.name }}</a>
+				<span id="versionstring"></span> <span id="username"></span> <span id="dataversion"></span>
+			</span>
+		</div>
+
+	</div>
+</footer>
+{% endif %}
+
+

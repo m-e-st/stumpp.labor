@@ -1,6 +1,27 @@
 ---
-layout: base.njk
+layout: main.njk
 description: "Startseite"
+format:
+    Xnoheader: true
+    Xnofooter: true
+menu:
+  - name: TEST
+  - menu: 
+      - name: a
+        url: http://www.stumpp.name/rezepte
+      - name: b1
+        url: http:172.16.1.1
+        tip: tiptip
+      - name: b2
+        url: http:172.16.1.1
+        tip: ""
+      - name: c1
+        lang: DDD
+      - name: c2
+        lang: EE
+        url: "https://c2.url"
+    name: hallo
+  - name: test
 ---
 
 <main>

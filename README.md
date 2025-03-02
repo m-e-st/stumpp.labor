@@ -1,4 +1,7 @@
-# {{project}}
+# Labor für Weiterentwicklung
+
+- https://labor.stumpp.name
+- https://github.com/m-e-st/stumpp.labor.git
 
 
 #### Entwicklung
@@ -12,4 +15,4 @@ Laufzeit:
 - W3.CSS v4  (herausgegeben von https://w3schools.com)
 
 Entwicklung
-- eleventy v1.0
+- eleventy v3.0
