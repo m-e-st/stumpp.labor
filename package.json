@@ -1,6 +1,6 @@
 {
   "name": "stumpp Labor",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "description": "Labor on GitHub Pages",
   "main": ".eleventy.js",
   "scripts": {
