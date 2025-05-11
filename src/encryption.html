@@ -1,0 +1,74 @@
+---
+type: page
+layout: base.njk
+permalink: "{{ page.filePathStem }}.html"
+version: 2025-04-21
+
+---
+<div class="w3-container">
+
+		<h2>SHA versus SJCL</h2>
+		<div class="w3-bar">
+			<label class="w3-bar-item" style="display:inline-block;width:3em">SHA</label>
+			<input id="shaSource"  class="w3-input w3-bar-item" placeholder="SHA text">
+			<input id="shaResult"  class="w3-input w3-bar-item" placeholder="SHA hash" readonly size="100">
+		</div>
+		<div class="w3-bar">
+			<label class="w3-bar-item" style="display:inline-block;width:3em">SJCL</label>
+			<input id="sjclSource"  class="w3-input w3-bar-item" placeholder="SJCL text">
+			<input id="sjclResult"  class="w3-input w3-bar-item" placeholder="SJCL hash" readonly size="100">
+		</div>
+	<button class="w3-button w3-border w3-xlarge">XEQ</button>
+	<p>
+			{{ text.lorem }}
+	</p>
+</div>
+<hr class="w3-bottombar w3-topbar w3-border-deep-orange">
+
+{% crypt "0217", "w3-blue w3-container w3-padding-small" %}
+Hello World<br><b class="w3-red">Dies ist ein Text</b>
+{% endcrypt %}
+
+{% crypt "0218", "w3-yellow w3-panel w3-padding-large" %}
+{{ text.lorem }}
+{% endcrypt %}
+
+<script>
+
+/*** initialization on document ready ***/
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	document.getElementById("shaResult").value = shaHash();
+	document.getElementById("sjclResult").value = sjclHash();
+	contentDecryption("0217", "Hah", "w3-hide w3-jumbo");
+	//~ contentDecryption("0217", "Hah", "w3-hide w3-jumbo");
+});	
+
+//~ function contentDecryption(password) {
+	//~ cryptedElements = document.getElementsByTagName("ms-crypted");
+	//~ for (let i = 0; i < cryptedElements.length; i++) {
+		//~ const e = cryptedElements[i];
+		//~ const c = e.getAttribute("data-content"); 
+		//~ e.removeAttribute("data-content");
+		//~ try {		 e.innerHTML = sjcl.decrypt(password, c);	}
+		//~ catch(err) { e.innerHTML = "<p class='w3-red w3-padding-small'>ERROR DURING DECRYPTION.</p>" {# + e.innerHTML #}; }
+		//~ e.style.display = "block";
+	//~ }
+//~ }
+	
+/** Hash functions **/
+
+function shaHash(textToHash = "Hello World", salt="Nothing") {
+	const hashObj = new jsSHA("SHA-256", "TEXT", { encoding: "UTF8"} );
+	hashObj.update(textToHash);
+	hashObj.update(salt);
+	const hash =  hashObj.getHash("B64");
+	return hash;
+}
+function sjclHash(textToHash = "Hello World", salt="Nothing") {
+	const hash = sjcl.hash.sha256.hash(textToHash+salt);
+	const text = sjcl.codec.base64.fromBits(hash);
+	return text;
+}
+
+</script>

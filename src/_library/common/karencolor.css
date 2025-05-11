@@ -1,0 +1,84 @@
+/**
+ * Karen Velázquez color system *
+ * https://app.uxcel.com/showcase/color-system-by-karen-velzquez-179
+ * 
+ **/
+ 
+:root {
+	--kv-dark-purple:	#36034b;		/* primary colors */
+	--kv-indigo:		#610688;
+	--kv-lavender:		#c294fd;
+	--kv-mauve:			#dcc3fe;
+	
+	--kv-teal:			#3DB895;		/* secondary colors */
+	--kv-mint:			#94dbc7;
+	--kv-light-green:	#85ff8f;
+	--kv-lime:			#cßff63;
+	
+	--kv-gray:			#707070;		/* neutral colors */
+	--kv-silver:		#919191;
+	--kv-timberwolf:	#d6d6d6;
+	--kv-platinum:		#ebebeb;
+	
+	--kv-coral:			#e66260;		/* system colors */
+	--kv-pumpkin:		#ffa630;
+	--kv-malachite:		#73de73;
+	--kv-azure:			#85dcff;
+}
+
+.kvc-dark-purple,.kvc-hover-dark-purple{color:#fff!important;background-color:var(--kv-dark-purple)!important}
+.kvc-text-dark-purple,.kvc-hover-text-dark-purple:hover{color:var(--kv-dark-purple)!important}
+.kvc-border-dark-purple,.kvc-hover-border-dark-purple:hover{border-color:var(--kv-dark-purple)!important}
+.kvc-indigo,.kvc-hover-indigo{color:#fff!important;background-color:var(--kv-indigo)!important}
+.kvc-text-indigo,.kvc-hover-text-indigo:hover{color:var(--kv-indigo)!important}
+.kvc-border-indigo,.kvc-hover-border-indigo:hover{border-color:var(--kv-indigo)!important}
+.kvc-lavender,.kvc-hover-lavender{color:#000!important;background-color:var(--kv-lavender)!important}
+.kvc-text-lavender,.kvc-hover-text-lavender:hover{color:var(--kv-lavender)!important}
+.kvc-border-lavender,.kvc-hover-border-lavender:hover{border-color:var(--kv-lavender)!important}
+.kvc-mauve,.kvc-hover-mauve{color:#000!important;background-color:var(--kv-mauve)!important}
+.kvc-text-mauve,.kvc-hover-text-mauve:hover{color:var(--kv-mauve)!important}
+.kvc-border-mauve,.kvc-hover-border-mauve:hover{border-color:var(--kv-mauve)!important}
+
+.kvc-teal,.kvc-hover-teal{color:#fff!important;background-color:var(--kv-teal)!important}
+.kvc-text-teal,.kvc-hover-text-teal:hover{color:var(--kv-teal)!important}
+.kvc-border-teal,.kvc-hover-border-teal:hover{border-color:var(--kv-teal)!important}
+.kvc-mint,.kvc-hover-mint{color:#000!important;background-color:var(--kv-mint)!important}
+.kvc-text-mint,.kvc-hover-text-mint:hover{color:var(--kv-mint)!important}
+.kvc-border-mint,.kvc-hover-border-mint:hover{border-color:var(--kv-mint)!important}
+.kvc-light-green,.kvc-hover-light-green{color:#000!important;background-color:var(--kv-light-green)!important}
+.kvc-text-light-green,.kvc-hover-text-light-green:hover{color:var(--kv-light-green)!important}
+.kvc-border-light-green,.kvc-hover-border-light-green:hover{border-color:var(--kv-light-green)!important}
+.kvc-lime,.kvc-hover-lime{color:#000!important;background-color:var(--kv-lime)!important}
+.kvc-text-lime,.kvc-hover-text-lime:hover{color:var(--kv-lime)!important}
+.kvc-border-lime,.kvc-hover-border-lime:hover{border-color:var(--kv-lime)!important}
+
+.kvc-gray,.kvc-hover-gray{color:#fff!important;background-color:var(--kv-gray)!important}
+.kvc-text-gray,.kvc-hover-text-gray:hover{color:var(--kv-gray)!important}
+.kvc-border-gray,.kvc-hover-border-gray:hover{border-color:var(--kv-gray)!important}
+.kvc-silver,.kvc-hover-silver{color:#fff!important;background-color:var(--kv-silver)!important}
+.kvc-text-silver,.kvc-hover-text-silver:hover{color:var(--kv-silver)!important}
+.kvc-border-silver,.kvc-hover-border-silver:hover{border-color:var(--kv-silver)!important}
+.kvc-timberwolf,.kvc-hover-timberwolf{color:#000!important;background-color:var(--kv-timberwolf)!important}
+.kvc-text-timberwolf,.kvc-hover-text-timberwolf:hover{color:var(--kv-timberwolf)!important}
+.kvc-border-timberwolf,.kvc-hover-border-timberwolf:hover{border-color:var(--kv-timberwolf)!important}
+.kvc-platinum,.kvc-hover-platinum{color:#000!important;background-color:var(--kv-platinum)!important}
+.kvc-text-platinum,.kvc-hover-text-platinum:hover{color:var(--kv-platinum)!important}
+.kvc-border-platinum,.kvc-hover-border-platinum:hover{border-color:var(--kv-platinum)!important}
+
+.kvc-coral,.kvc-hover-coral{color:#fff!important;background-color:var(--kv-coral)!important}
+.kvc-text-coral,.kvc-hover-text-coral:hover{color:var(--kv-coral)!important}
+.kvc-border-coral,.kvc-hover-border-coral:hover{border-color:var(--kv-coral)!important}
+.kvc-pumpkin,.kvc-hover-pumpkin{color:#fff!important;background-color:var(--kv-pumpkin)!important}
+.kvc-text-pumpkin,.kvc-hover-text-pumpkin:hover{color:var(--kv-pumpkin)!important}
+.kvc-border-pumpkin,.kvc-hover-border-pumpkin:hover{border-color:var(--kv-pumpkin)!important}
+.kvc-malachite,.kvc-hover-malachite{color:#fff!important;background-color:var(--kv-malachite)!important}
+.kvc-text-malachite,.kvc-hover-text-malachite:hover{color:var(--kv-malachite)!important}
+.kvc-border-malachite,.kvc-hover-border-malachite:hover{border-color:var(--kv-malachite)!important}
+.kvc-azure,.kvc-hover-azure{color:#fff!important;background-color:var(--kv-azure)!important}
+.kvc-text-azure,.kvc-hover-text-azure:hover{color:var(--kv-azure)!important}
+.kvc-border-azure,.kvc-hover-border-azure:hover{border-color:var(--kv-azure)!important}
+
+.kvc-pale-coral,.kvc-hover-pale-coral{color:#000!important;background-color:rgba(230,98,96,0.5)!important}
+.kvc-pale-pumpkin,.kvc-hover-pale-pumpkin{color:#000!important;background-color:rgba(255,166,48,0.5)!important}
+.kvc-pale-malachite,.kvc-hover-pale-malachite{color:#000!important;background-color:rgba(115,222,115,0.5)!important}
+.kvc-pale-azure,.kvc-hover-pale-azure{color:#000!important;background-color:rgba(133,220,255,0.5)!important}

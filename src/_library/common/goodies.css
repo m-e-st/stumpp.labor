@@ -1,0 +1,21 @@
+/***
+ *	goodies.css 
+ *
+ *	Copyright 2024 Michael Stumpp (michael@stumpp.name)
+ *
+ */
+/*** ************************************************************** ***/
+
+.hidden-fileselector {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.tag-word {
+	color: red;
+	text-transform: uppercase;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html lang="de"> 
+  <head> 
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<title>SHA versus SJCL</title>
+	<script src="/sha.js"></script> 
+	<script src="/sjcl.js"></script> 
+	<link rel="/stylesheet" href="w3.css" />		
+  </head> 
+  <body>
+		<h2>SHA versus SJCL</h2>
+		<div>
+			<label style="display:inline-block;width:3em">SHA</label>
+			<input id="shaSource"  class="w3-input"placeholder="SHA text2hash">
+			<input id="shaResult"  class="w3-input" readonly size="64">
+		</div>
+		<div>
+			<label style="display:inline-block;width:3em">SJCL</label>
+			<input id="sjclSource"  class="w3-input"placeholder="SJCL text2hash">
+			<input id="sjclResult"  class="w3-input" readonly size="64">
+		</div>
+	<button class="w3-button w3-xlarge">XEQ</button>
+	<p>
+			Lorem ipsum ...
+		</p>
+  </body> 
+  <script>
+	function shaHash(textToHash = "Hello World") {
+		const hashObj = new jsSHA("SHA-512", "TEXT", { encoding: "UTF8"} );
+		hashObj.update(textToHash);
+		const hash =  hashObj.getHash("B64");
+		return hash;
+	}
+	function scjlHash(textToHash = "Hello World") {
+		const hash = sjcl.hash.sha256.hash("hello world");
+		console.log("SCJL", textToHash, hash);
+		return x;
+	}
+  </script>
+</html>

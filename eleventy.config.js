@@ -1,15 +1,26 @@
+/** ******************************** **/
+/** 10.05.2025 - add crypt shortcode **/
+/** ******************************** **/
+
 const htmlMinifier = require ('html-minifier-terser');
 const lucideIcons = require("@grimlink/eleventy-plugin-lucide-icons");
 const markdownItCallouts = require("markdown-it-obsidian-callouts");
+const sjcl = require("sjcl");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItCallouts));
 	
     eleventyConfig.addPlugin(lucideIcons);
   	eleventyConfig.addShortcode("anchor", function setAnchor(anchorName) { return `<a name="${anchorName}"><br><br><hr></a>`; });
+  	eleventyConfig.addPairedShortcode("crypt", function(content, password = "", classList="") { 
+		return `<ms-crypted style='display:none' class='${classList}' `
+			 + "data-content='" + sjcl.encrypt(password, content) + "'>"
+			 + "Content is encrypted.<br>Inhalt ist verschlüsselt.<br>El contenido está encriptado."
+			 + "</ms-crypted>";
+	});
+
   	eleventyConfig.addFilter("Datum", function(value) { 
-		const string = value.toISOString();
-		return string.slice(8,10) +'.' + string.slice(5,7) + '.' + string.slice(0,4);
+		const string = value.toISOString();return string.slice(8,10) +'.' + string.slice(5,7) + '.' + string.slice(0,4);
 	});
   	eleventyConfig.addFilter("dateTitle", function(value) { 
 		const token = value.split('_')[1];
@@ -51,6 +62,7 @@ module.exports = function (eleventyConfig) {
 	// This allows Eleventy to watch for file changes during local development.
 	//~ eleventyConfig.addWatchTarget("src/**/*.php");
 	eleventyConfig.addWatchTarget("src/_library/");
+	eleventyConfig.addWatchTarget("src/_common/");
 	eleventyConfig.setUseGitIgnore(false);
 
 	return {

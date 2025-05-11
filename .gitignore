@@ -2,10 +2,11 @@
 
 
 # Project standard ignores 
-dist
-public
-stash
-assets
+/dist
+/public
+/stash
+/assets
+/common
 
 # node.js
 node_modules/

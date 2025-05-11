@@ -4,7 +4,9 @@
  *	Copyright 2024 Michael Stumpp (michael@stumpp.name)
  *
  *  07.08.2023 default styles for layouts (sidebar, content)
- *  22.01.2025 configurable main page color */
+ *  22.01.2025 configurable main page color
+ *	02.03.2025 theme colors
+ */
 
 {# set pagecolor = "lime" #}
 {# set pagecolor = "amber" #}
@@ -14,10 +16,17 @@
 
 /*** ************************************************************** ***/
 
-.theme-header, -theme-header:hover, .w3-tag {
+.theme-header, .theme-header:hover, .w3-tag {
 	color: var(--{{pagecolor}}-50)!important;
 	background-color: var(--{{pagecolor}}-950)!important
 }
+
+.theme-light	{ color:var(--{{pagecolor}}-950); background-color:var(--{{pagecolor}}-50) }
+.theme-color	{ color:var(--{{pagecolor}}-950); background-color:var(--{{pagecolor}}-500) }
+.theme-dark		{ color:var(--{{pagecolor}}-50);  background-color:var(--{{pagecolor}}-950) }
+.theme-text		{ color:var(--{{pagecolor}}-400) }
+.theme-border	{border-color:#ffc107!important}
+
 
 body {
 	background-image: linear-gradient(white, var(--{{pagecolor}}-50), var(--{{pagecolor}}-100), var(--{{pagecolor}}-100), var(--{{pagecolor}}-200), var(--{{pagecolor}}-400));   

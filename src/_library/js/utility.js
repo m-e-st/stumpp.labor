@@ -4,6 +4,7 @@
  *	Copyright 2024 Michael Stumpp (michael@stumpp.name)
  *
  * 07.01.2024 completly new - bundling JS
+ * 04.03.2025 displayTag
  */
 
 
@@ -35,6 +36,12 @@ function setLucideStroke (parentElement, strokeColor = '#FFF', strokeWidth = 2) 
 
 function displayMain(state=true) {
 	const nodes = document.getElementsByTagName('main');
+	for (let i = 0; i < nodes.length; i++) {
+		nodes[i].style.display = (state) ? "block" : "none";
+	}
+}
+function displayTag(tagName='main', state=true) {
+	const nodes = document.getElementsByTagName(tagName);
 	for (let i = 0; i < nodes.length; i++) {
 		nodes[i].style.display = (state) ? "block" : "none";
 	}
