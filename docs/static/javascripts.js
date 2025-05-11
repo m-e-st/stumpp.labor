@@ -91,7 +91,7 @@ function contentDecryption(password, errorMsg = "", errorClasses = "") {
  * by "," in Nunjucks and by " " in Liquid.
  * 
  * Usage:
- * 			<ms-crypted style='display:none' class='' data-content='{"iv":"+TiTxSUmaQY8Ob+UUmhxjQ==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"jJLerUuQPts=","ct":"F2VakaUyG36HjQYxvZq+n4f+yd69WjNd5Owi/9VEtoeLi3EpZDTP"}'>Content is encrypted.<br>Inhalt ist verschlüsselt.<br>El contenido está encriptado.</ms-crypted>
+ * 			<ms-crypted style='display:none' class='' data-content='{"iv":"hycTBLp0n9YfNlqTIChXUw==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"7hgWriqvNiY=","ct":"bALrNmAWOnRj+3VtYJRiXb5WJ38VgMkaD0hL7Gr4Fq8PpL1JCkOE"}'>Content is encrypted.<br>Inhalt ist verschlüsselt.<br>El contenido está encriptado.</ms-crypted>
  * 
  * Additionally call "contentDecryption" on DOMContentLoaded event to decrypt:
  * 
