@@ -7,11 +7,12 @@ version: 2025-05-28
 # 28.05.2025 - Hauptmenü-Punkt ist anklickbar, wenn URL angegeben ist.
 # 28.08.2025 - menu: caption before name
 # 28.08.2025 - background image
+# 05.10.2025 - main-2 mit dem klassischen schwarzen Layout
 
 buttonActiveClass: w3-dark-gray
 ---
 
-<!-- Adaption für Mareikes Blog März 2025 -->
+<!-- main-2 mit dem klassischen schwarzen Layout -->
 
 <style>
 @media (max-width:300px){ .w3-hide-tiny{display:none!important} }
@@ -49,32 +50,71 @@ buttonActiveClass: w3-dark-gray
 {% endif %}
 
 {% if not format.noheader %}
-<header class="">
-	<div class="w3-container theme-pale">
-		<img src={{site.pagelogo}}
-			 alt="{{site.pagelogotext}}|d('page logo')"
-			 class="w3-left w3-padding w3-hide-tiny"
-			 style="margin:0px 0;height:120px;"
-			 {{ attrAnimation("layoutLogo") }}
-			 >
-		<div class="w3-left w3-hide-small">
-			<h2 class="ms-text-red" style="margin-top:24px;">{{ site.title }}</h2>
-			<h6 class="ms-text-red" style="margin-top:-1em">Version {{ pkg.version }}</h6>
+<header class="{{ "w3-top" if not format.topscroll }} w3-black">
+	<div class="w3-cell-row">
+		<div class="w3-mobile w3-container w3-cell w3-cell-middle w3-hover-shadow {{ format.logoclass }}" style="width:15rem">
+			<img src={{site.pagelogo}}
+				 alt="{{site.pagelogotext}}|d('page logo')"
+				 class="w3-left w3-hide-tiny"
+				 style="height:36px;margin-top:8px;margin-right:12px;"
+				 {{ attrAnimation("layoutLogo") }}
+				 >
+			<div class="w3-left w3-hide-small">
+				<h3 class="w3-tooltip" style="xmargin-top:24px;">{{ site.caption | lower }} 
+					<span class="w3-text w3-small" style="transform:translateY(-2px)">v.{{ pkg.version }}</span>
+				</h3>
+			</div>
 		</div>
-		<div class="w3-right theme-pale" style="margin-top:32px;">
-			<button class="w3-btn w3-hide-small w3-circle" {{attrAnimation("layoutMail", "redden")}} >
-				{% lucide "mail" ,{ "stroke": "#888", "stroke-width": 1, "size":"40" } %}
+<!-- ---------------------- -->
+<!-- MENU FOR LARGE SCREENS -->
+<!-- ---------------------- -->	
+		<div class="w3-hide-small w3-container w3-cell w3-cell-middle">
+			<nav class="w3-bar w3-black w3-hide-small">
+				{% for item in menu -%}
+					{% if item.menu %}
+						<div class="w3-dropdown-hover">
+							{%- if item.url -%}
+								{{ itemlink(item.caption if(item.caption) else item.name, item.url, "menu", item.tip, item.lang)}}
+							{%- else -%}			
+								<button class="w3-button">{{ item.caption|d(item.name)|safe|title }}</button>
+							{%- endif -%}
+							<div class="w3-dropdown-content w3-bar-block w3-black">
+							{% for subitem in item.menu -%}
+								{% if subitem.name =='---' %}
+									<span class="w3-bar-item" style="cursor:none"></span>
+								{% else %}
+									{{ itemlink(item.caption if(subitem.caption) else subitem.name, subitem.url, '', subitem.tip, subitem.lang) }}
+								{% endif %}
+							{%- endfor %}
+							</div>
+						</div>
+					{% elif item.url %}
+						{{ itemlink(item.caption if(item.caption) else item.name, item.url, item.pos, item.tip, item.lang)}}
+					{% elif item.name %}
+						{{ itemlink(item.caption if(item.caption) else item.name, '#') }}
+					{% endif %}
+				{%- endfor %}
+			</nav>
+		</div>	<!--menu for large screens -->
+		
+		<!-- Buttons oben rechts-->			
+		<div class="w3-right" style="xmargin-top:32px;">
+			<button class="w3-btn w3-hide-small w3-circle" {{attrAnimation("layoutMail", "redden")}} style="margin-right:-16px">
+				{% lucide "mail" ,{ "stroke": "#888", "stroke-width": 1, "size":"32" } %}
 			</button>
 			<button class="w3-btn w3-hide-small w3-circle" {{attrAnimation("layoutLogin", "greenen")}}>
-				{% lucide "user" ,{ "stroke": "#888", "stroke-width": 1, "size":"40" } %}
+				{% lucide "user" ,{ "stroke": "#888", "stroke-width": 1, "size":"32" } %}
 			</button>
-
+		</div>
+		<!-- Ende Buttons oben rechts-->
+	
 <!-- ---------------------- -->
 <!-- MENU FOR SMALL SCREENS -->
-<!-- ---------------------- -->					
+<!-- ---------------------- -->	
+		<div class="w3-container w3-hide-medium w3-hide-large w3-cell w3-cell-middle" style="position:absolute;top:4px;right:-16px;">				
 			<div class="w3-dropdown-hover w3-hide-medium w3-hide-large">
 				<button id="layoutMenu" class="w3-btn">
-					{% lucide "menu" ,{ "stroke": "#888", "stroke-width": 1, "size":"40" } %}
+					{% lucide "menu" ,{ "stroke": "#888", "stroke-width": 1, "size":"32" } %}
 				</button>			
 				<div class="w3-dropdown-content w3-bar-block w3-black w3-large" style="right:-16px">
 				{% for item in menu -%}
@@ -106,47 +146,16 @@ buttonActiveClass: w3-dark-gray
 				{%- endfor %}
 				</div>
 			</div>
-		</div>
-		<!-- Ende Buttons oben rechts-->
-	</div>
+		</div> <!--menu for small screens -->
+	</div> <!-- w3-cell-row -->
+
 
 {% if not format.topics %}
 	<div class="w3-panel w3-black w3-small w3-hide-medium w3-hide-large">&nbsp;</div>
 {% endif %}
 	
-<!-- ---------------------- -->
-<!-- MENU FOR LARGE SCREENS -->
-<!-- ---------------------- -->	
-	<div class="w3-panel w3-black w3-small w3-hide-medium w3-hide-large">&nbsp;</div>
-	<nav class="w3-bar w3-black w3-large w3-hide-small">
-		<span class="w3-bar-item"></span>
-		<span class="w3-bar-item w3-right"></span>
-	{#	<span class="w3-bar-item w3-small w3-right w3-padding-small" style="margin:6px 8px">Version {{ pkg.version }}</span> #}
-		{% for item in menu -%}
-			{% if item.menu %}
-				<div class="w3-dropdown-hover">
-					{%- if item.url -%}
-						{{ itemlink(item.caption, item.url, "menu", item.tip, item.lang)}}
-					{%- else -%}			
-						<button class="w3-button">{{ item.name|safe|title }}</button>
-					{%- endif -%}
-					<div class="w3-dropdown-content w3-bar-block w3-black">
-					{% for subitem in item.menu -%}
-						{% if subitem.name =='---' %}
-							<span class="w3-bar-item" style="cursor:none"></span>
-						{% else %}
-							{{ itemlink(subitem.name, subitem.url, '', subitem.tip, subitem.lang) }}
-						{% endif %}
-					{%- endfor %}
-					</div>
-				</div>
-			{% elif item.url %}
-				{{ itemlink(item.caption, item.url, item.pos, item.tip, item.lang)}}
-			{% elif item.name %}
-				{{ itemlink(item.caption, '#') }}
-			{% endif %}
-		{%- endfor %}
-	</nav>
+	
+	<hr class="w3-border-white w3-hide-small" style="margin-top:0; border: 1px solid;">		
 </header>
 {% endif %}
 

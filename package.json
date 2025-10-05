@@ -18,7 +18,9 @@
     "@grimlink/eleventy-plugin-lucide-icons": "^2.1.0",
     "del-cli": "^6.0.0",
     "html-minifier-terser": "^7.2.0",
+    "markdown-it-obsidian": "^1.1.0",
     "markdown-it-obsidian-callouts": "^0.3.1",
+    "markdown-it-obsidian-images": "^1.0.1",
     "sjcl": "^1.0.8"
   },
   "keywords": []

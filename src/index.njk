@@ -1,33 +1,59 @@
 ---
-layout: main.njk
+layout: main-2.njk
 description: "Startseite"
 format:
     Xnoheader: true
     Xnofooter: true
-menu:
-  - name: Submenu
-    menu: 
-      - name: a
-        url: http://www.stumpp.name/rezepte
-      - name: b1
-        url: http:172.16.1.1
-        tip: tiptip
-      - name: b2
-        url: http:172.16.1.1
-        tip: ""
-      - name: c1
-        lang: DDD
-      - name: c2
-        lang: EE
-        url: "https://c2.url"
-  - name: Encryption
-    url: /encryption.html
-  - name: Markdown
-    url: /markdown.html
-  - name: test
+menuitem: home
+
+list:
+  - key: Demo
+    val: Im Himmel ist Jahrmarkt
+  - key: Referrer
+    val: $ document.referrer;
+  - key: URL
+    val: $ document.URL;
 ---
 
 <main>
 <h1>Startseite</h1>
 <p>Dies ist die Startseite des Projekts</p>
+<p>Layout: <b>{{ layout }}</b></p>
+
+	<table class="w3-table w3-striped w3-bordered">
+		<thead class="w3-lime"><tr>
+			<th>Key</th><th>Value</th>
+		</tr></thead>
+		<tbody>
+		{% for item in list %}
+			<tr><td id="key-{{loop.index}}">{{item.key}}</td><td id="val-{{loop.index}}">{{item.val}}</td></tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
 </main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	const elements = document.querySelectorAll('[id^="val"]');
+	elements.forEach(elem => {
+		const str = elem.innerText
+		if (str.startsWith("$")) {
+			const code = str.slice(1);
+			try {
+				const result = eval(code); // execute the JS code
+				console.log("Result:", result);
+				document.getElementById(elem.id).innerText = result;
+				return result;
+			} catch (e) {
+			  document.getElementById(elem.id).innerText = "Error executing code: " + e;
+			}
+			console.log(elem.id, elem.innerText); // or do whatever you want with the element
+		}
+	});
+});
+
+function myFunction() {
+  console.log("DOM is ready, images may not be loaded yet!");
+}
+</script>
