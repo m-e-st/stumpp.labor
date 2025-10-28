@@ -1,0 +1,51 @@
+---
+type: page
+title: iFrame Evaluations
+layout: main-2.njk
+permalink: "{{ page.filePathStem }}.html"
+version: 2025-10-12
+menuitem: frames
+
+menu:
+ - name: Blogs
+   menu:
+      - name: Michas Blog
+        url: /iframes.html?src=https:/text.tchncs.de/m-e-st
+      - name: Software Werkzeuge
+        url: /iframes.html?src=https:/text.tchncs.de/software-werkzeuge
+      - name: Technische Ratschläge
+        url: /iframes.html?src=https://blog.stumpp.name
+      - name: Home Automation
+        url: /iframes.html
+
+frames:
+  - name: Software Werkzeuge
+    url: https://text.tchncs.de/software-werkzeuge/
+
+---
+
+<style>
+
+iframe {
+  position: fixed;
+  top: 64;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 72px);
+  border: none;
+}
+</style>
+
+<iframe id="blog-frame" src=""
+		>
+</iframe>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+	const source = new URL(window.location).searchParams.get("src");
+	console.log (source, window.location);
+	const frame = document.getElementById("blog-frame");
+	frame.src = source ? "" + source : "";
+});
+</script>

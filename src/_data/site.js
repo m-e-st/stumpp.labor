@@ -17,5 +17,7 @@ module.exports = {
 		code: "&#x6d;&#x69;&#x63;&#x68;&#x61;&#x65;&#x6c;&#x40;&#x73;&#x74;&#x75;&#x6d;&#x70;&#x70;&#x2e;&#x6e;&#x61;&#x6d;&#x65;"
 	}, 
 
-	env: process.env.ELEVENTY_ENV === 'production'
+	env: process.env.ELEVENTY_ENV === 'production',
+	host: process.env.ENVIRONMENT || 'unknown',
+	built: new Date()	
 }

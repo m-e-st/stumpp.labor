@@ -4,21 +4,48 @@ description: "Startseite"
 format:
     Xnoheader: true
     Xnofooter: true
-menuitem: home
+    topscroll: true
+menuitem: "🏠"
 
-list:
-  - key: Demo
-    val: Im Himmel ist Jahrmarkt
-  - key: Referrer
-    val: $ document.referrer;
-  - key: URL
-    val: $ document.URL;
+eleventyComputed:
+  list:
+    - key: Demo
+      val: Im Himmel ist Jahrmarkt
+    - key: Referrer
+      val: $ document.referrer;
+    - key: URL
+      val: $ document.URL;
+    - key: timestamp
+      val: $ new Date().toISOString();
+    - key: 11ty Layout
+      val: "{{ layout }}"
+    - key: 11ty title
+      val: "{{ title | d ('default: '+site.title) }}"
+    - key: 11ty caption
+      val: "{{ caption | d ('default: '+site.caption) }}"
+    - key: window.location
+      val: $ window.location
+    - key: window.location.href
+      val: $ window.location.href
+    - key: window.location.search
+      val: $ window.location.search
+    - key: URL(window.location).searchParams.get("hello")
+      val: $ "«" + new URL(window.location).searchParams.get("hello") + "»";
+    - key: Environment
+      val: «{{ site.host }}»
+    - key: build
+      val: «{{ site.built }}»
+    - key: site.env
+      val: «{{ site.env }}»
 ---
 
-<main>
-<h1>Startseite</h1>
-<p>Dies ist die Startseite des Projekts</p>
-<p>Layout: <b>{{ layout }}</b></p>
+<style>
+.w3-striped tbody tr:nth-child(even){background-color:var(--lime-200)}
+</style>
+
+<div>
+	<h1>Startseite</h1>
+	<p>Dies ist die Startseite des Projekts</p>
 
 	<table class="w3-table w3-striped w3-bordered">
 		<thead class="w3-lime"><tr>
@@ -31,7 +58,7 @@ list:
 		</tbody>
 	</table>
 
-</main>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -48,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			} catch (e) {
 			  document.getElementById(elem.id).innerText = "Error executing code: " + e;
 			}
-			console.log(elem.id, elem.innerText); // or do whatever you want with the element
 		}
 	});
 });

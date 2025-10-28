@@ -1,12 +1,17 @@
 ---
-layout: main.njk
-description: "Demoseite"
+layout: main-2.njk
+title: "Demoseite"
 permalink: "{{ page.filePathStem }}.html"
 version: 2025-10-01
+menuitem: demonstration
 format:
     noheader: false
 ---
 
 <h1>Demonstration</h1>
 
+<pre>
+C="{{ menu[3].caption if(menu[3].caption) else menu[3].name }}"
+M="{{menuitem }}"
+</pre>
 {{ text.lorem }}

@@ -2,21 +2,22 @@
 /** v2.4 - 2025-04-07 replace eleventy-img by markdown-it-obsidian-images **/
 /** v2.5 - 2025-05-11 encryption by sjcl **/
 /** v2.6 - 2025-05-29 js-yaml **/
+/** v2.7 - 2025-10-28 dotenvx **/
 
 const htmlMinifier = require ('html-minifier-terser');
 const lucideIcons = require("@grimlink/eleventy-plugin-lucide-icons");
 const markdownItCallouts = require("markdown-it-obsidian-callouts");					/* v2.1 */
 const markdownObsidianImages = require('markdown-it-obsidian-images');					/* v2.4 */
-const markdownWikilinks = require('markdown-it-obsidian');					/* v2.6 */
+const markdownWikilinks = require('markdown-it-obsidian');								/* v2.6 */
 const path = require('path');															/* v2.2 */
 const sjcl = require("sjcl");
 const yaml = require("js-yaml");														/* v2.6 */
+require('dotenv').config(); // load .env into process.env								/* v2.7 */
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItCallouts));		/* v2.1 */
 	eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownObsidianImages({ makeAllLinksAbsolute: true, baseURL: '/blog/img/' })));	/* v2.4 */
 	eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownWikilinks()));			/* v2.6 */
-	//~ eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownWikilinks({ makeAllLinksAbsolute: false, baseURL: '/blog/'})));			/* v2.6 */
 	
     eleventyConfig.addPlugin(lucideIcons);
     eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
@@ -74,7 +75,6 @@ module.exports = function (eleventyConfig) {
 		}
 		return content;
 	});
-
 
 	// Folders to copy to build dir (See. 1.1)
 	eleventyConfig.addPassthroughCopy("src/static/**");

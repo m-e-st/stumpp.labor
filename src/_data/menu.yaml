@@ -1,24 +1,26 @@
 #
 #
-  - name: Home
-    url:  /index.html
-    menu: 
-      - name: a
-        url: http://www.stumpp.name/rezepte
-      - name: b1
-        url: http:172.16.1.1
-        tip: tiptip
-      - name: b2 22
-        url: http:172.16.1.1
-        tip: ""
-      - name: c1
-        lang: DDD
-      - name: c2
-        lang: EE
-        url: "https://c2.url"
-  - name: Encryption
-    url: /encryption.html
-  - name: Markdown
-    url: /markdown.html
-  - name: Demonstration
-    url: /demopage.html
+ #- name: test
+ - name: home
+   caption: "🏠"
+   url:  /index.html
+ - name: experimental
+   caption: experimente
+   url: /functions.html
+   menu: 
+     - name: frames
+       url: /iframes.html
+       tip: Hier testen wir verschiedene Einsatzmöglichkeiten von iFrames
+     - name: encryption
+       url: /encryption.html
+       tip: momentan außer Betrieb
+ - name: markdown
+   url: /markdown.html
+ - name: demopage
+   caption: Demonstration
+   url: /demopage.html
+   menu:
+     - name: Uno
+     - name: Dos
+     - name: Tres
+

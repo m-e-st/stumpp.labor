@@ -17,6 +17,7 @@
     "@11ty/eleventy": "^3.0.0",
     "@grimlink/eleventy-plugin-lucide-icons": "^2.1.0",
     "del-cli": "^6.0.0",
+    "dotenv": "^17.2.3",
     "html-minifier-terser": "^7.2.0",
     "markdown-it-obsidian": "^1.1.0",
     "markdown-it-obsidian-callouts": "^0.3.1",
