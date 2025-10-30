@@ -33,10 +33,16 @@ eleventyComputed:
       val: $ "«" + new URL(window.location).searchParams.get("hello") + "»";
     - key: Environment
       val: «{{ site.host }}»
-    - key: build
+    - key: date built
       val: «{{ site.built }}»
     - key: site.env
       val: «{{ site.env }}»
+    - key: Static Site Generator
+      val: «{{ site.ssg.name }} v{{ site.ssg.version }}»
+    - key: Eleventy Root
+      val: «{{ site.ssg.root }}»
+    - key: Eleventy Env
+      val: «{{ site.ssg.environment }}»
 ---
 
 <style>
@@ -78,8 +84,4 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 });
-
-function myFunction() {
-  console.log("DOM is ready, images may not be loaded yet!");
-}
 </script>
